@@ -27,15 +27,15 @@ name: emmet
 **Usage:**
 div.test (tab)  
 .test (tab)  
-h1.test (tab)  
-h1#test (tab) >> <h1 id="test"></h1>  
-ul (tag) >> <ul></ul>  
-li (tab)  
-! (tab) >> tab  
-div+ul+li >> <div></div><ul></ul><li></li>  
-div+p+bq >> <div></div><p></p><blockquote></blockquote>  
-a (tab)  
-a:link (tab)  
+`h1.test (tab)`  
+`h1#test (tab) >> <h1 id="test"></h1>`  
+`ul (tag) >> <ul></ul>`  
+`li (tab)`  
+`! (tab) >> tab`  
+`div+ul+li >> <div></div><ul></ul><li></li>`  
+`div+p+bq >> <div></div><p></p><blockquote></blockquote>`  
+`a (tab)`  
+`a:link (tab)`  
 
 ### 2. File icons
 
