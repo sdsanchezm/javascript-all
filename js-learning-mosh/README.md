@@ -867,7 +867,7 @@ new Number(); // number literals are: 1, 2, 3, ...
 2. The way to access constructors is ''another.constructor'' // if the object constructor was created before
 
 ```
-const another = new Circle(1);function
+const another = new Circle(1);
 ```
 
 3. The constructor method references the function that was used to create that object
@@ -1346,6 +1346,55 @@ arrayx1.find( (element) => { element > 10 } );
 ```
 arrayx1.find( element => element > 10 );
 ```
+
+Arrow Functions in Depth (arrow functions examples):
+- In arrow functions, everything after the arrow, is to be returned
+
+- The basic function:
+```
+function sum(x,y){
+  return x + y
+}
+```
+With Arrow functions, would be like this:
+```
+let sum = (x,y) => x + y;
+```
+
+- The basic function:
+```
+function isPosit( Number ){
+  return Number >= 0
+}
+```
+With Arrow functions, would be like this:
+```
+let isPosit = (x) => x >= 0;
+```
+
+- The basic function:
+```
+function randomNumber(){
+  return Math.random
+}
+```
+With Arrow functions, would be like this:
+```
+let randomNumber = () => Math.random
+```
+
+- The basic function:
+```
+document.addEventListener('click', function()){
+  console.log('Click')
+}
+```
+Turns into this, with Arrow functions:
+```
+document.addEventListener('click', () => console.log( 'click' ))
+```
+
+
 
 #### Removing Elements
 
