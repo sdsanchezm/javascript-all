@@ -808,7 +808,7 @@ console.log(circle_2);
 ```
 
 2. This is the first way to create objects  
-3. In factory functions we user, the **Camel Notation**
+3. In factory functions we use, the **Camel Notation**
 
 
 
