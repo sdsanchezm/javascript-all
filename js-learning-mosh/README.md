@@ -472,14 +472,14 @@ function maxOf2Numbers(number1, number2){
 
 1. this is a poor way of writing code, is ugly:  
 ```
-funtion isLandscape(width, height){
+function isLandscape(width, height){
   return (width > height) ? true : false;
 }
 ```
 
 2. Nice way
 ```
-funtion isLandscape(width, height){
+function isLandscape(width, height){
   return (width > height);
 }
 ```
