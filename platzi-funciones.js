@@ -1,3 +1,7 @@
+// Disclaimer: material usado para uso educativo exclusivamente, no para lucro o negocio. 
+// El creador de este repositorio, no es el autor de este material
+// Creditos para el respectivo creador
+
 // funcion declarativa:
 
 function miFunction(){
@@ -159,6 +163,90 @@ console.log(marcasRecientes);
 // find, retorna el primer valor encontrado de acuerdo a la condicion indicada
 // forEach, aplica una condicion a cada elemento de un array
 //some, retorna true or false, si un elemento esta dentro del array, que cumplan con la condicion indicada
+
+// =================================== Preguntas de funciones:
+
+// ¿Qué es una función?
+// Un bloque de código que hace una serie de procedimientos
+
+// ¿Cuándo me sirve usar una función en mi código?
+// Cuando se repite varias lineas de codigo en el proyecto
+
+// ¿Cuál es la diferencia entre parámetros y argumentos de una función
+// Parametro es una variable que está en la definición de una función, argumento son los datos que se le pasan a los parametros de una función
+
+// =================================== Preguntas basicas de javascript
+// ¿Qué es una variable y para qué sirve?
+// Un espacio reservado de memoria donde se almacena informacion
+
+// ¿Cuál es la diferencia entre declarar e inicializar una variable?
+// Una variable se declara para reservar su espacio de memorio, se inicializa para guardar info en ese espacio.
+
+// ¿Cuál es la diferencia entre sumar números y concatenar strings?
+// Sumar numeros como operacion matematica, concatenar es cuando se juntan dos textos para formar uno mismo
+
+// ¿Cuál operador me permite sumar o concate
+// El signo de +
+
+// Crear una variable a partir de otra 
+let fullName = `${nombre} ${apellido}`;
+
+
+// ========================= preguntas de condicionales - Questions about conditionals
+// ¿Qué es una condicional?
+// Un grupo de instrucciones que se ejecuta segun el resultado de una evaluación
+
+// ¿Qué tipos de condicionales existen en JavaScript y cuáles son sus diferencias?
+// If, else if, switch y ternario
+
+// ¿Puedo combinar funciones y condicionales?
+// Sisas
+
+
+// ========================= preguntas de Loops - Questions about Loops
+// ¿Qué es un ciclo?
+// Un bloque de codigo que se repite n veces
+
+// ¿Qué tipos de ciclos existen en JavaScript?
+// for, for of, for in, while, do-while
+
+// ¿Qué es un ciclo infinito y por qué es un problema?
+// Es un ciclo que nunca se va a detener, puede causar que nuestro ordenador se apague por exceso consumo de memoria en el navegador
+
+// ¿Puedo mezclar ciclos y condicionales?
+// sisas
+
+// ========================= preguntas de Arrays - Questions about arrays
+// ¿Qué es un array?
+// Son un conjunto de valores del mismo tipo almacenados en una sola variable
+
+// ¿Qué es un objeto?
+// Un objeto es una colección de propiedades
+
+// ¿Cuándo es mejor usar objetos o arrays?
+// Depende
+
+// ¿Puedo mezclar arrays con objetos o incluso objetos con arrays?
+// sisas
+
+
+// some shortcuts for vscode
+
+Windows: https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+macOS: https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+Linux: https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf
+
+// Encapsular los Console.Logs:
+
+// Abrir
+console.group("nombre que desees");
+
+// Cerrar
+console.groupEnd();
+
+
+
+
 
 
 
