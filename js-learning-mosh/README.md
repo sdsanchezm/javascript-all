@@ -2167,28 +2167,65 @@ video1.showTags();
 
 ---
 
-## Edit a file
+## DOM Manipulation:
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+### Simple function to bring info from HTML
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
 
+```
+function calcularPrecio(){
+
+const inputCost = document.getElementById('inputCost');
+const inputcostValue = inputCost.value;
+
+const inputRate = document.getElementById('inputRate');
+const inputRateValue = inputRate.value;
+
+const PrecioCalc = calculateDiscount(inputcostValue, inputRateValue);
+
+const resultX = document.getElementById("resultX");
+
+resultX.innerText = "El precio con descuento es $" + PrecioCalc;
+
+}
+```
+### Sumary of some expressions:
+
+document.getElementById("thisIsAnID")
+parent.getElementByTagName('input')
+parent.getElementByClassName('form-control')
+
+parentElement.querySelector('')
+document.querySelector('#address') //unicamente devuelve el primer elemento que se encuentre
+document.querySelector('input')
+document.querySelector('.form-control')
+
+document.querySelectorAll('input')
+
+
+
+-- // parent.getElementById(‘id’) => nos permite obtener un elemento a través de su id.
+// .
+-- // parent.getElementsByClassName(‘class’) => obtiene un array con todos los elementos hijos que tengan esa clase, ojo “getElementByClassName” no existe, es decir no podremos obtener solo 1 elemento con esa clase.
+// .
+-- // parent.getElementsByTagName(‘div’) => con este método obtenemos una lista o “array list” con todos los elementos que tengan esa etiqueta, ejemplo todos los divs. Al igual que con el método anterior no hay posibilidad de usarlo en singular, siempre tendremos que usar getElements
+// .
+-- // parent.querySelector() => nos permite buscar de 3 formas, con id, clase o tagName. A diferencia de los 2 anteriores este nos devuelve 1 solo elemento, el primero que contenga el valor que se le paso. Id => (’#id’), class => (’.class’), tagName (‘div’)
+// .
+-- // parent.querySelectorAll() => este método retorna una array list con todos los elementos que tengan ese selector (id, class o tagName)
+// .
+-- // Casi siempre el elemento “padre o parent” es document. ya que estamos haciendo referencia a todo el DOM, todo el documento y esto en ciertos casos nos permite evitar errores.
+-- // ejemplo = const button = document.querySelector(’#button)
+
+
+
+
+
+--- 
+## Edit a .md file:
+
+1. This **this** is bold text
+2: This is a line: 
 ---
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+3. This is a link:, [Google](https://www.google.com/). 
+4. Another Link example: [This Repo](https://github.com/sdsanchezm/javascript-all)
