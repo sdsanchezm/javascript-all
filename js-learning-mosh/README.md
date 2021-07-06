@@ -2189,8 +2189,10 @@ resultX.innerText = "El precio con descuento es $" + PrecioCalc;
 
 }
 ```
+
 ### Sumary of some expressions:
 
+```
 document.getElementById("thisIsAnID")
 parent.getElementByTagName('input')
 parent.getElementByClassName('form-control')
@@ -2201,21 +2203,21 @@ document.querySelector('input')
 document.querySelector('.form-control')
 
 document.querySelectorAll('input')
+```
 
 
-
--- // parent.getElementById(‘id’) => nos permite obtener un elemento a través de su id.
+- // parent.getElementById(‘id’) => nos permite obtener un elemento a través de su id.
 // .
--- // parent.getElementsByClassName(‘class’) => obtiene un array con todos los elementos hijos que tengan esa clase, ojo “getElementByClassName” no existe, es decir no podremos obtener solo 1 elemento con esa clase.
+- // parent.getElementsByClassName(‘class’) => obtiene un array con todos los elementos hijos que tengan esa clase, ojo “getElementByClassName” no existe, es decir no podremos obtener solo 1 elemento con esa clase.
 // .
--- // parent.getElementsByTagName(‘div’) => con este método obtenemos una lista o “array list” con todos los elementos que tengan esa etiqueta, ejemplo todos los divs. Al igual que con el método anterior no hay posibilidad de usarlo en singular, siempre tendremos que usar getElements
+- // parent.getElementsByTagName(‘div’) => con este método obtenemos una lista o “array list” con todos los elementos que tengan esa etiqueta, ejemplo todos los divs. Al igual que con el método anterior no hay posibilidad de usarlo en singular, siempre tendremos que usar getElements
 // .
--- // parent.querySelector() => nos permite buscar de 3 formas, con id, clase o tagName. A diferencia de los 2 anteriores este nos devuelve 1 solo elemento, el primero que contenga el valor que se le paso. Id => (’#id’), class => (’.class’), tagName (‘div’)
+- // parent.querySelector() => nos permite buscar de 3 formas, con id, clase o tagName. A diferencia de los 2 anteriores este nos devuelve 1 solo elemento, el primero que contenga el valor que se le paso. Id => (’#id’), class => (’.class’), tagName (‘div’)
 // .
--- // parent.querySelectorAll() => este método retorna una array list con todos los elementos que tengan ese selector (id, class o tagName)
+- // parent.querySelectorAll() => este método retorna una array list con todos los elementos que tengan ese selector (id, class o tagName)
 // .
--- // Casi siempre el elemento “padre o parent” es document. ya que estamos haciendo referencia a todo el DOM, todo el documento y esto en ciertos casos nos permite evitar errores.
--- // ejemplo = const button = document.querySelector(’#button)
+- // Casi siempre el elemento “padre o parent” es document. ya que estamos haciendo referencia a todo el DOM, todo el documento y esto en ciertos casos nos permite evitar errores.
+- // ejemplo = const button = document.querySelector(’#button)
 
 
 
@@ -2224,8 +2226,9 @@ document.querySelectorAll('input')
 --- 
 ## Edit a .md file:
 
-1. This **this** is bold text
-2: This is a line: 
+1. **This** is bold text
+2. This is a line: 
+
 ---
 3. This is a link:, [Google](https://www.google.com/). 
 4. Another Link example: [This Repo](https://github.com/sdsanchezm/javascript-all)
