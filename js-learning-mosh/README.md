@@ -201,14 +201,15 @@ console.log(x);
 console.log(x++);
 console.log(++x);
 ```
+
 8. Decrement:  
 --x // decrement first and then shows the value  
 
 **Assignment Operators:**  
 
-1. =  
-2. +=  > x = x + 5  
-3. *= > x = x * 5  
+1. `=  `
+2. `+=  > x = x + 5  `
+3. `*= > x = x * 5  `
 
 **Comparison Operators:**  
 //Relational operators:  
@@ -1863,18 +1864,19 @@ funtion sum(discount, ...prices){
 
 console.log( sum(0.1, 20, 30) )
 ```
+
 - it is called the rest operator because we can call 0 or more parameters before the rest operator
 
 #### Default Parameters
 
-- we can use the || (or logical) to determinate between values:
+- We can use the || (or logical) to determinate between values:
+
 ```
 function interest( principal, rate, years ){
   rate = rate || 3.5; // if rate is truthy, then will use it, if not, will use 3.5
   years = years || 5;
   return principal * rate / 100 * years;
 }
-
 console.log( 1000, undefined, 5 )
 ```
 
@@ -2116,6 +2118,7 @@ video1.showTags();
 ```
 
 - Solution 2: using the Bind() method; this is an old way to do it;
+
 ```
 const video1 = {
  title: 'xxyyzz',
@@ -2127,10 +2130,12 @@ const video1 = {
  }
 };
 video1.showTags();
+
 ```
 
 - Solution 3: using the arrow function; The good thing about using the arrow function is that inherit the `this` value:
 - In this case, `this` is not rebound to a new object
+
 ```
 const video1 = {
  title: 'xxyyzz',
@@ -2308,6 +2313,148 @@ function calcularMediaAritmetica(lista) {
 }
 ```
 
+## ECMAScript 6+
+
+### Parametros por defecto
+
+```
+function newFunction2(name = Andrea, age = 44, country = 'AR')
+newFunction2(); //para llamar
+newFunction2('Korg', 22, 'MX'); // para llamar pero usando valores
+
+```
+### Template literals
+- Ya no se necesita usar el `+` para concatenar texto, se puede hacer asi:
+```
+text1 = 'hello';
+text2 = 'world';
+string1 = text1 + ' ' + text2;
+string1_withEcma6 = `${text1} ${text2}`; // this is the new way to print on console
+```
+
+### Salto de Linea
+- Se puede hacer salto de linea de strings: 
+```
+let randomString = ` this is a line
+that does not require
+a plus sign
+`;
+```
+
+### Desestructuracion 
+- Extract variables from an object literal: 
+```
+person = {
+  name: 'Kraus',
+  'age': 22,
+  'country': 'MX'
+}
+
+let {name, age, country} = person; //Esta es la nueva forma que se puede usar con ECMAS6
+
+// la vieja forma es esta: 
+console.log(person.name, person.age, person.country);
+```
+
+### Operador de propagacion (los 3 puntos):
+- 
+```
+let array1 = ['first', 'second', 'third'];
+let array2 = ['A', 'B', 'C'];
+
+let array3 = ['zero', ...array1, ...array2]
+console.log(array3); // this will have all the arrays
+```
+
+### Scopes de LET y CONST:
+
+- LET ony exist in the actual scope
+- VAR exist globally, so it is accessible in all the document object
+- CONST does not allow to re-assign 
+
+### Parametros en un objeto:
+
+- Ya no se require hacer: age:age or name:name... ahora solo `age`, or `name`
+```
+let name = 'Kraus';
+let age = 42;
+object1 = { name:name, age:age } //esto era antes
+object2 = { name, age } //esto es con ECMAS6
+```
+
+### Arrow Functions:
+- It's a way to simplyfy functions and code:
+- Antes:
+```
+const names = [
+  { name: 'Evila', age: 22 },
+  { name: 'Krappe', age: 23 }
+]
+
+let namesList1 = names.map(function (item) { //esto se llama funcion anonima 
+  console.log(item.name);
+})
+```
+- Now with arrow functions:
+```
+let namesList2 = names.map(item => console.log(item.name));
+```
+- Other example, if we are passing several values:
+```
+const namesList3 = (name, age, country) => {
+  ... 
+}
+
+```
+- Other way to do it, if it's only 1 value: 
+```
+const namesList4 = name => {
+  ...
+}
+```
+- Anothe example: 
+```
+const square = num => num * num; 
+```
+
+### Promises (promesas):
+
+- Some Examples:
+
+```
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    if (false) {
+      resolve('Hey!');
+    } else {
+      reject('Ups!!');
+    }
+  });
+}
+
+helloPromise()
+  .then(response => console.log(response))
+  .catch(error => console.log(error));
+```
+
+### Objects / Objectos:
+- Some Examples:
+```
+class calculator {
+  constructor() {
+    this.valueA = 0;
+    this.valueB = 0;
+  }
+  sum(valueA, valueB) {
+    this.valueA = valueA;
+    this.valueB = valueB;
+    return this.valueA + this.valueB;
+  }
+}
+
+const calc = new calculator();
+console.log(calc.sum(2, 2));
+```
 
 --- 
 ## Edit a .md file:
