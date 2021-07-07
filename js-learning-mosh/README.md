@@ -2219,8 +2219,34 @@ document.querySelectorAll('input')
 - // Casi siempre el elemento “padre o parent” es document. ya que estamos haciendo referencia a todo el DOM, todo el documento y esto en ciertos casos nos permite evitar errores.
 - // ejemplo = const button = document.querySelector(’#button)
 
-
-
+- More: 
+```
+const salariosCol = colombia.map(
+  function (personita) {
+    return personita.salary;
+  }
+);
+```
+- More: 
+```
+const salariosColSorted = salariosCol.sort(
+  function (salaryA, salaryB) {
+    return salaryA - salaryB;
+  }
+);
+```
+- more:
+```
+function calcularMediaAritmetica(lista) {
+  const sumaLista = lista.reduce(
+    function (valorAcumulado = 0, nuevoElemento) {
+      return valorAcumulado + nuevoElemento;
+    }
+  );
+  const promedioLista = sumaLista / lista.length;
+  return promedioLista;
+}
+```
 
 
 --- 
