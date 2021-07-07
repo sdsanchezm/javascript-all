@@ -2219,7 +2219,8 @@ document.querySelectorAll('input')
 - // Casi siempre el elemento “padre o parent” es document. ya que estamos haciendo referencia a todo el DOM, todo el documento y esto en ciertos casos nos permite evitar errores.
 - // ejemplo = const button = document.querySelector(’#button)
 
-- More: 
+- **map examples**: 
+- First one:
 ```
 const salariosCol = colombia.map(
   function (personita) {
@@ -2227,7 +2228,46 @@ const salariosCol = colombia.map(
   }
 );
 ```
-- More: 
+- Second one :
+```
+const lista1 = [
+  1,
+  2,
+  3,
+  1,
+  2,
+  3,
+  4,
+  2,
+  2,
+  2,
+  1,
+];
+
+const lista1Count = {};
+
+lista1.map(
+  function (elemento) {
+    if (lista1Count[elemento]) {
+      lista1Count[elemento] += 1;
+    } else {
+      lista1Count[elemento] = 1;
+    }
+  }
+);
+
+const lista1Array = Object.entries(lista1Count).sort(
+  function (elementoA, elementoB) {
+    return elementoA[1] - elementoB[1];
+  }
+);
+
+const moda = lista1Array[lista1Array.length - 1];
+
+```
+
+
+- **Sort**: 
 ```
 const salariosColSorted = salariosCol.sort(
   function (salaryA, salaryB) {
@@ -2235,7 +2275,8 @@ const salariosColSorted = salariosCol.sort(
   }
 );
 ```
-- more:
+- **Reduce Examples:**
+- First one
 ```
 function calcularMediaAritmetica(lista) {
   const sumaLista = lista.reduce(
@@ -2244,6 +2285,25 @@ function calcularMediaAritmetica(lista) {
     }
   );
   const promedioLista = sumaLista / lista.length;
+  return promedioLista;
+}
+```
+- Second one:
+```
+function calcularMediaAritmetica(lista) {
+  // let sumaLista = 0;
+  // for (let i = 0; i < lista.length; i++) {
+  //   sumaLista = sumaLista + lista[i];
+  // }
+
+  const sumaLista = lista.reduce(
+    function (valorAcumulado = 0, nuevoElemento) {
+      return valorAcumulado + nuevoElemento;
+    }
+  );
+
+  const promedioLista = sumaLista / lista.length;
+
   return promedioLista;
 }
 ```
