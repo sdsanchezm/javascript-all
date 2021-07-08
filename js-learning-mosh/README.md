@@ -2456,6 +2456,46 @@ const calc = new calculator();
 console.log(calc.sum(2, 2));
 ```
 
+### Modulos / Modules (Import and Export):
+- 
+
+- File main.js
+```
+import { hello } from './module';
+
+hello();
+```
+
+- File module.js: 
+```
+
+const hello = () => {
+  return 'hello!'
+}
+
+export default hello;
+```
+
+### Generators / Generadores:
+- Define 2 true conditions but, will be executed according ot the `next()` call, like this: 
+
+```
+function* helloWorld() {
+  if (true) {
+    yield 'Hello, ';
+  }
+  if (true) {
+    yield 'World';
+  }
+};
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+```
+
+
 --- 
 ## Edit a .md file:
 
