@@ -2476,6 +2476,43 @@ const hello = () => {
 export default hello;
 ```
 
+- Para importar solo lo que se necesite:
+```
+import { hello } from './module'
+
+console.log(hello())
+```
+
+- Importar varios elementos: 
+```
+import { hello, bye } from './module'
+
+console.log(hello())
+console.log(bye)
+```
+
+- Cambiar el nombre o poner un alias:
+```
+import { hello, bye as byeGreeting } from './module'
+
+console.log(hello())
+console.log(byeGreeting)
+```
+
+- Se puede importar todo, asi:
+```
+import * as allGreetings from './module'
+
+console.log(allGreetings.hello())
+console.log(allGreetings.bye)
+```
+
+- En NodeJS, quizas sea necesario usar la exportacion '', asi: `module.exports = hello;`
+- La importacion asi: `const hello = require('./module');`
+- Para verificar: `console.log(hello());`
+
+
+
 ### Generators / Generadores:
 - Define 2 true conditions but, will be executed according ot the `next()` call, like this: 
 
@@ -2495,6 +2532,25 @@ console.log(generatorHello.next().value);
 console.log(generatorHello.next().value);
 ```
 
+## ECMAScript 7:
+
+### *Include* in arrays and strings: (to check if a value is inside of an array or string)
+- Example: 
+```
+let array = [2,4,6,8,1,10,12];
+if (array.includes(8)){
+  console.log('found!')
+} else{
+  console.log('not found!');
+}
+```
+### Exponentes: 
+
+- Example: `let result = 2 ** 8` // el resultado sera `256`
+
+```
+
+```
 
 --- 
 ## Edit a .md file:
