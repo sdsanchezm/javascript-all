@@ -2704,7 +2704,49 @@ const day = match[3]
 console.log(year, month, day);
 ```
 
+## ECMAScript 10:
 
+- Remover espacio al inicio y final de un string:
+```
+let hello = '        hello world';
+console.log(hello);
+console.log(hello.trimStart());
+
+let hello = 'hello World       ';
+console.log(hello);
+console.log(hello.trimEnd());
+```
+
+- try and catch, ahora no necesita el argument de error, quedaria asi:
+```
+try {
+
+} catch {
+  error
+}
+```
+
+- De un array, convertir a un objeto:
+
+```
+let entries = [["name", "oscar"], ["age", 32]];
+console.log(Object.fromEntries(entries));
+
+let mySymbl = `My Symbol`;
+let symbol = Symbol(mySymbl);
+console.log(symbol.description);
+```
+
+- flatMap method: 
+```
+let array = [1,2,3, [1,2,3, [1,2,3]]];
+
+console.log(array.flat(2));
+
+let array = [1,2,3,4,5];
+
+console.log(array.flatMap(value => [value, value * 2]));
+```
 
 ---
 --- 
