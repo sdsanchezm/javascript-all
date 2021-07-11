@@ -23,7 +23,7 @@ Crtl + b
 2. turbo-javascript: https://atom.io/packages/turbo-javascript  
 
 ### 1. Emmet
-name: emmet
+name: emmetinteger
 **Usage:**
 div.test (tab)  
 .test (tab)  
@@ -123,10 +123,14 @@ name: highlight-selected
 
 #### 3. Types of variables (Primitives or Value Types), those are:  
 `let name = 'Kurt';` //string   
-`let age = 30;` //number, float, integer are just numbers   
+`let age = 30;` //number, float, integer are just numbers --parseInt(string) [convert f string t int]  
 `let isApproved = true;` //boolean   
 `let firstName = undefined;` //undefined is a value but also a type  
 `let selectedColor = null;` //we use null when want to clear the value of a variable, the type is object  
+
+- `parseInt(string)` [convert f string t int]
+- `parseInt(string)` [convert f string t float]
+- Number() [convert f string t number]
 
 #### 4. Dynamic  or Static languages:
 Static Languages: the type of variable changes   
@@ -2552,6 +2556,127 @@ if (array.includes(8)){
 
 ```
 
+## ECMAScript 8:
+
+- In this way, it is returned an array of arrays, the inner array, returns property and value (both)
+```
+const data = {
+  frontend: 'Kraus',
+  backend: 'Merk',
+  design: 'Kirk',
+}
+
+const entries = Object.entries(data);
+console.log(entries);
+console.log(entries.length);
+```
+
+- In this way, it is returned an array of arrays: (this way only returns values, not properties)
+```
+const data = {
+  frontend: 'Kros',
+  backend: 'Kaupt',
+  design: 'Kerk',
+}
+
+const values = Object.values(data);
+console.log(values)
+console.log(values.length)
+```
+
+- Add characters at the end or beggining of a string:
+
+```
+const string = 'hello';
+console.log(string.padStart(7, 'hi'));
+console.log(string.padEnd(12, ' -----'))
+console.log('food'.padEnd(12, '  -----'))
+```
+
+- Trailing commas: (es la coma al final del ultimo record en un objeto)
+```
+const obj = {
+  name: 'oscar', // coma al final
+}
+```
+
+- The use of 2 reserved words: `await` and `async`: 
+
+```
+const helloWorld = () => {
+  return new Promise((resolve, reject) => {
+    (false)
+      ? setTimeout(() => resolve('Hello World'), 3000)
+      : reject(new Error('Test Error'))
+  })
+};
+
+const helloAsync = async () => {
+  const hello = await helloWorld();
+  console.log(hello);
+};
+
+helloAsync();
+
+const anotherFunction = async () => {
+  try {
+    const hello = await helloWorld();
+    console.log(hello);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+anotherFunction();
+```
+
+## ECMAScript 9:
+
+- Use `...all` to extract in a object the rest of the information
+```
+const obj = {
+  name: 'kirk',
+  age: 23,
+  country: 'DE'
+};
+
+let { name, ...all } = obj;
+console.log(name, all);
+// resultado: kirk { age: 23, country: 'DE' }
+```
+
+- Use `...all` to extract in a object the rest of the information
+```
+const obj = {
+  name: 'kirk',
+  age: 23,
+  country: 'DE'
+};
+
+let { country, ...all } = obj;
+console.log(all);
+// resultado: { name: 'kirk', age: 23 }
+```
+
+- Concatenacion de objectos:
+
+```
+// objeto 1:
+const obj1 = {
+  name: 'Kirk',
+  age: 23,
+};
+
+//objeto 2:
+const obj2 = {
+  ...obj1,
+  country: 'DE',
+};
+
+console.log(obj2);
+```
+
+---
 --- 
 ## Edit a .md file:
 
