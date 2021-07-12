@@ -2319,7 +2319,7 @@ function calcularMediaAritmetica(lista) {
 
 ## ECMAScript 6+
 
-### Parametros por defecto
+### Parametros por defecto (defaul params): 
 
 ```
 function newFunction2(name = Andrea, age = 44, country = 'AR')
