@@ -2717,7 +2717,7 @@ console.log(hello);
 console.log(hello.trimEnd());
 ```
 
-- try and catch, ahora no necesita el argument de error, quedaria asi:
+- try and catch, ahora no necesita el argument de error, quedaria asi (Optional Catch Binding):
 ```
 try {
 
