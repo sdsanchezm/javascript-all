@@ -1,0 +1,31 @@
+{
+  "name": "asincronismo",
+  "version": "1.0.0",
+  "description": "do some work with callbacks, promises and await async in javascript",
+  "main": "js-learning-platzi/index.js",
+  "scripts": {
+    "callback": "node js-learning-platzi/callbacks/index.js",
+    "callback:challenge": "node js-learning-platzi/callbacks/challenge.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdsanchezm/javascript-all.git"
+  },
+  "keywords": [
+    "javascript",
+    "async",
+    "await",
+    "promises",
+    "callbacks"
+  ],
+  "author": "SergioSanc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdsanchezm/javascript-all/issues"
+  },
+  "homepage": "https://github.com/sdsanchezm/javascript-all#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
