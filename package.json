@@ -5,7 +5,11 @@
   "main": "js-learning-platzi/index.js",
   "scripts": {
     "callback": "node js-learning-platzi/callbacks/index.js",
-    "callback:challenge": "node js-learning-platzi/callbacks/challenge.js"
+    "callback:challenge": "node js-learning-platzi/callbacks/challenge.js",
+    "promise": "node js-learning-platzi/promises/index.js",
+    "promise:challenge": "node js-learning-platzi/promises/challenge.js",
+    "async": "node js-learning-platzi/async/index.js",
+    "async:challenge": "node js-learning-platzi/async/challenge.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +30,7 @@
   "homepage": "https://github.com/sdsanchezm/javascript-all#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "node-fetch": "^2.6.1",
     "xmlhttprequest": "^1.8.0"
   }
 }
