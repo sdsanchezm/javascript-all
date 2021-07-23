@@ -1213,6 +1213,33 @@ new.toTimeString();
 new.toISOString(); //this is the regular way to transfer dates between the client and the server (standard use in web and mobile applications)
 ```
 
+#### Inheritance in objects in Javascript:
+
+```
+class Rectangle {
+    constructor(w, h) {
+        this.w = w;
+        this.h = h;
+    }
+}
+
+Rectangle.prototype.area = function() {
+    let area1 = this.w * this.h;
+    return area1;
+}
+/*
+ *  Write code that adds an 'area' method to the Rectangle class' prototype
+ */
+class Square extends Rectangle {
+    constructor (side){
+        super();
+        this.w = side;
+        this.h = side;
+    }
+}
+```
+
+
 #### Exercise Address Object
 - Check `c.js` for codes.  
 
