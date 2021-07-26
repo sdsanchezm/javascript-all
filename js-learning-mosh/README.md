@@ -1222,14 +1222,14 @@ class Rectangle {
         this.h = h;
     }
 }
-
+/*
+ *  This is the code that adds an 'area' method to the Rectangle class' prototype
+ */
 Rectangle.prototype.area = function() {
     let area1 = this.w * this.h;
     return area1;
 }
-/*
- *  Write code that adds an 'area' method to the Rectangle class' prototype
- */
+// this is the code that inheritate the `Rectangle` class and extends into `Square` 
 class Square extends Rectangle {
     constructor (side){
         super();
