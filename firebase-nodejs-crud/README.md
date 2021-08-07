@@ -1,15 +1,23 @@
-# How to install
+# Basic firebase CRUD
+## Description: 
 
-### src (folder) --> todo el codigo
-### index.js (file) -> arranca el project
-### app.js (file) -> configurar el servidor o la application
-### views (folder) -> htmls files
-### routes (folder) -> rutas del servidor
-### public (folder) -> archivos publicos del servidor
-### modulos instalados: morgan, express, express-handlebars, firebase-admin, path viene por default, 
+- src (folder) --> todo el codigo
+- index.js (file) -> arranca el project
+- app.js (file) -> configurar el servidor o la application
+- views (folder) -> htmls files
+- routes (folder) -> rutas del servidor
+- public (folder) -> archivos publicos del servidor
+- modules installde: morgan, express, express-handlebars, firebase-admin, path viene por default, 
 
-### el modulo nodemon (para preview todo sin reload), 
-### hay que modificar el package.json : el objeto scripts, para anadir el shortcut y se ejecuta con 'npm run dev'
+- nodemon (preview with no reload) 
+- Modify the package.json file : the 'scripts' object, to add the shortcut and run with 'npm run dev'
+
+## Install 
+
+### using nodejs
+- `npm install`
+
+## Documentation
 
 ### grab the firebase link from:
 - `https://console.firebase.google.com/`
