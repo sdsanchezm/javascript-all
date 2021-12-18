@@ -17,57 +17,6 @@ router.get('/', (req, res) => {
     res.json(products);
 })
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    if( id === '222' ){
-        res.status(404).json({
-            message: 'Not Found'
-        })
-    } else{
-        res.status(200).json({
-            id,
-            name: 'great product',
-            price: 1000
-        })
-    }
-})
-
-router.post('/', (req, res) => {
-    const body = req.body;
-    res.json({
-        message: 'created',
-        data: body
-    })
-})
-
-router.patch('/:id', (req, res) => { // patch recibe los objetos de forma parcial
-    const { id } = req.params;
-    const body = req.body;
-    res.json({
-        message: 'Product Updated',
-        data: body,
-        id,
-    })
-})
-
-router.put('/:id', (req, res) => { // put no recibe parcial, receives the complete object
-    const { id } = req.params;
-    const body = req.body;
-    res.json({
-        message: 'Product Updated',
-        data: body,
-        id,
-    })
-})
-
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({
-        message: 'Product Deleted',
-        id,
-    })
-})
-
 router.get('/filter', (req, res) => {
     res.send('all good here');
 })

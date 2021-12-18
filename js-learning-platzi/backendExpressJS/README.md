@@ -109,16 +109,104 @@ app.get('/products1/:id', (req, res) => {
 - Inside of the folder routes, it should be only the routers files
 
 
-#### Postman or Insomnia Installation
+#### 9. Postman or Insomnia Installation
 - Postmand
 - Insomnia
 
-#### POST: the create method
+#### 10. POST: the create method
 - Post se usa para hacer creacion
 
-#### PUT, PATCH, DELETE methods
-#### Status Codes
-#### Introduction to Services
+
+
+#### 11. PUT, PATCH, DELETE methods
+
+- If we would like to update, we should send an ID
+- In a PUT we should send all attributes in order to be update completely. (hay que enviar TODOS los atributos)
+
+- In a PATCH, it updates partially 
+
+- PATCH recibe los objetos de forma parcial
+
+- All REST convention is a best practice, according to the documentation
+
+```
+router.post('/', (req, res) => {
+    const body = req.body;
+    res.json({
+        message: 'created',
+        data: body
+    })
+})
+
+router.patch('/:id', (req, res) => { // patch recibe los objetos de forma parcial
+    const { id } = req.params;
+    const body = req.body;
+    res.json({
+        message: 'Product Updated',
+        data: body,
+        id,
+    })
+})
+
+router.put('/:id', (req, res) => { // put no recibe parcial, receives the complete object
+    const { id } = req.params;
+    const body = req.body;
+    res.json({
+        message: 'Product Updated',
+        data: body,
+        id,
+    })
+})
+```
+
+#### 12 Status Codes
+
+- The best practice is to use status code, that allows to confirm thatthe request was correct, or if there is an internal server error, etc
+- A good documentation is here: [https://developer.mozilla.org/en-US/docs/Web/HTTP/Status] 
+- Also with cats here [https://http.cat/]
+- And with Dogs here [https://httpstatusdogs.com/]
+
+- When we create a resource, the code should be 200
+- When we do not find a resource, the code should be 404
+
+- Code Example:
+
+```
+router.post('/', (req, res) => {
+    const body = req.body;
+    res.status(200).json({
+        message: 'created',
+        data: body
+    })
+})
+```
+
+- Res got a new `status(200)` 
+
+```
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    if( id === '222' ){
+        res.status(404).json({
+            message: 'Not Found'
+        })
+    } else{
+        res.status(200).json({
+            id,
+            name: 'great product',
+            price: 1000
+        })
+    }
+})
+```
+- Here we just validate dynamically status codes
+
+
+#### 13 Introduction to Services
+
+- the clean Architecture
+
+
 #### Create, Edit, Delete
 #### Async and Await to capture Errors
 ### Middlewares

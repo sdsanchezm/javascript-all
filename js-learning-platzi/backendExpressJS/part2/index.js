@@ -4,8 +4,6 @@ const routerApi = require('./routes');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // aca se habilita un middleware 
-
 app.get('/', (req, res) => {
     res.send('hi, this is root');
 })
