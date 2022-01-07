@@ -19,20 +19,15 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const body = req.body;
-    res.json({
-        message: 'created',
-        data: body
-    })
+    const newProduct = service.create(body);
+    res.status(201).json(newProduct);
 })
 
 router.patch('/:id', (req, res) => { // patch recibe los objetos de forma parcial
-    const { id } = req.params;
+    const { id } = req.params; //
     const body = req.body;
-    res.json({
-        message: 'Product Updated',
-        data: body,
-        id,
-    })
+    const productUpdated = service.update(id, body);
+    res.json(productUpdated);
 })
 
 router.put('/:id', (req, res) => { // put no recibe parcial, receives the complete object
@@ -47,10 +42,8 @@ router.put('/:id', (req, res) => { // put no recibe parcial, receives the comple
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    res.json({
-        message: 'Product Deleted',
-        id,
-    })
+    const productDeleted = service.delete(id);
+    res.json(productDeleted);
 })
 
 router.get('/filter', (req, res) => {

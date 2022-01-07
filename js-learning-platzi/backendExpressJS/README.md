@@ -208,6 +208,77 @@ router.get('/:id', (req, res) => {
 
 
 #### Create, Edit, Delete
+
+- Services:
+
+-UpdateProduct Service
+```
+    update(id, updateDetails){
+        const index = this.products.findIndex( item => item.id === id );
+        if ( index === -1 ) { throw new Error('Product Not Found');}
+        const actualProduct = this.products[index];
+        this.products[index] = {
+            ...actualProduct,
+            ...updateDetails,
+        };
+        return this.products[index];
+    }
+
+```
+
+-Delete Product Service
+```
+    delete(id){
+        const index = this.products.findIndex( item => item.id === id );
+        if ( index === -1 ) { throw new Error('Product Not Found');}
+        const deletedValue = this.products.splice(index, 1); // elimina un elemento y cuandos a partir de ese elemento
+        return { id };
+    }
+```
+
+- Create Product Service
+```
+    create(data){
+        const newProduct = {
+            id: faker.datatype.uuid(),
+            ...data,
+        }
+        this.products.push(newProduct);
+        return newProduct;
+    }
+```
+
+- Routes to use the services above:
+
+- Patch, to partially update
+```
+router.patch('/:id', (req, res) => { // patch recibe los objetos de forma parcial
+    const { id } = req.params; //
+    const body = req.body;
+    const productUpdated = service.update(id, body);
+    res.json(productUpdated);
+})
+```
+
+- Delete: 
+```
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    const productDeleted = service.delete(id);
+    res.json(productDeleted);
+})
+```
+
+- Create a new record:
+```
+router.post('/', (req, res) => {
+    const body = req.body;
+    const newProduct = service.create(body);
+    res.status(201).json(newProduct);
+})
+```
+
+
 #### Async and Await to capture Errors
 ### Middlewares
 #### What are middlewares

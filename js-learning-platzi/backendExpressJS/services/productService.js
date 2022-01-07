@@ -19,8 +19,13 @@ class ProductsService {
         }
     }
 
-    create(){
-
+    create(data){
+        const newProduct = {
+            id: faker.datatype.uuid(),
+            ...data,
+        }
+        this.products.push(newProduct);
+        return newProduct;
     }
 
     find(){
@@ -31,12 +36,22 @@ class ProductsService {
         return this.products.find(item => item.id === id);
     }
 
-    update(){
-
+    update(id, updateDetails){
+        const index = this.products.findIndex( item => item.id === id );
+        if ( index === -1 ) { throw new Error('Product Not Found');}
+        const actualProduct = this.products[index];
+        this.products[index] = {
+            ...actualProduct,
+            ...updateDetails,
+        };
+        return this.products[index];
     }
-
-    delete(){
-
+    
+    delete(id){
+        const index = this.products.findIndex( item => item.id === id );
+        if ( index === -1 ) { throw new Error('Product Not Found');}
+        const deletedValue = this.products.splice(index, 1); // elimina un elemento y cuandos a partir de ese elemento
+        return { id };
     }
 
 
