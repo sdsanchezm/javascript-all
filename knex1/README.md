@@ -127,7 +127,7 @@ sqlite3 mydb.sqlite3
 select * from customers;
 ```
 
-## Creating the endpoing using express:
+## Creating the endpoint using express:
 - Create the endpoint, using express, and method get:
 ```
 const express = require('express');
@@ -137,6 +137,8 @@ const app = express();
 
 const knexConfig = require('./db/knexfile');
 const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({ message: 'alles gutte hier'})
@@ -174,7 +176,7 @@ npm start
 
 ```
     knex('table')
-    .select()
+    .select() // could also be .insert() -- check documentation at knexjs.org
     .then()
     .catch()
 ```
