@@ -87,6 +87,17 @@ npm run migrate
 
 - This will create the `mydb.sqlite3` file and also the schema.
 
+## Migrations
+- Official documentation at [https://knexjs.org/#Migrations-CLI](https://knexjs.org/#Migrations-CLI)
+- To run the migrate up (in the terminal) or create a script in the `package.json` file accordingly:
+```
+$ knex migrate:up
+```
+- To run the migrate down:
+```
+$ knex migrate:down
+```
+- So for example, a column changed the name. It would have to run the up or down script
 
 ## Create the seed
 - Documentation about this part, is here [https://knexjs.org/#Seeds-CLI](https://knexjs.org/#Seeds-CLI)
