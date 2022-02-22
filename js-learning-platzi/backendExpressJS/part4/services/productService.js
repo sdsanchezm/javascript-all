@@ -19,7 +19,7 @@ class ProductsService {
         }
     }
 
-    async create(data){
+    create(data){
         const newProduct = {
             id: faker.datatype.uuid(),
             ...data,
@@ -28,20 +28,15 @@ class ProductsService {
         return newProduct;
     }
 
-    /* async */ find(){
-        return new Promise( (resolve, reject) => { // this function contains an await in the products route -includes an await already-
-            setTimeout( () => {
-                resolve(this.products);
-            }, 4000 );
-        })
-        //return this.products;
+    find(){
+        return this.products;
     }
 
-    async findOne(id){
+    findOne(id){
         return this.products.find(item => item.id === id);
     }
 
-    async update(id, updateDetails){
+    update(id, updateDetails){
         const index = this.products.findIndex( item => item.id === id );
         if ( index === -1 ) { throw new Error('Product Not Found');}
         const actualProduct = this.products[index];
@@ -52,7 +47,7 @@ class ProductsService {
         return this.products[index];
     }
     
-    async delete(id){
+    delete(id){
         const index = this.products.findIndex( item => item.id === id );
         if ( index === -1 ) { throw new Error('Product Not Found');}
         const deletedValue = this.products.splice(index, 1); // elimina un elemento y cuandos a partir de ese elemento

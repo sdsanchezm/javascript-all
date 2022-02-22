@@ -280,8 +280,71 @@ router.post('/', (req, res) => {
 
 
 #### Async and Await to capture Errors
+- In this example, a route, 'patch' is an asynchronous functions and also, a try catch to receive the error that may trigger due to many factors
+```
+router.patch('/:id', async (req, res) => { // patch recibe los objetos de forma parcial
+    try { // el try, allows me to execute code and if there is an error in my async function, show it accordingly
+        const { id } = req.params; //
+        const body = req.body;
+        const productUpdated = await service.update(id, body);
+        res.json(productUpdated);
+    } catch (error) {
+        res.status(404).json({
+            message: error.message
+        })
+    }
+})
+```
+
+- Also the tag async, should be included in the service itself:
+```
+    async find(){
+        return this.products;
+    }
+```
+
+- The definition of the update function, should include the async tag
+```
+    async update(id, updateDetails){
+        const index = this.products.findIndex( item => item.id === id );
+        if ( index === -1 ) { throw new Error('Product Not Found');}
+        const actualProduct = this.products[index];
+        this.products[index] = {
+            ...actualProduct,
+            ...updateDetails,
+        };
+        return this.products[index];
+    }
+```
 ### Middlewares
+
 #### What are middlewares
+
+- Uses cases for middlewares:
+    - Work as pipes
+    - Data Validation
+    - Error Capturing
+    - Permission Validation
+    - Access Control
+
+- Documentation at: [https://expressjs.com/en/guide/writing-middleware.html](https://expressjs.com/en/guide/writing-middleware.html)
+
+Middleware es software que permite uno o más tipos de comunicación o conectividad entre dos o más aplicaciones o componentes de aplicaciones en una red distribuida. Al facilitar la conexión de aplicaciones que no fueron diseñadas para conectarse entre sí, y al brindar funcionalidad para conectarlas de manera inteligente, el middleware agiliza el desarrollo de aplicaciones y acelera el tiempo de comercialización.
+
+casos de uso le puedes dar en tus apps como:
+
+- Middleware a nivel de aplicación
+- Middleware a nivel de direccionamiento (routers)
+- Middleware para manejo de errores
+- Middlewares incorporados
+- Middleware de terceros
+
+- Actions performed by a middleware: 
+    - Execute any code.
+    - Make changes to the request and the response objects.
+    - End the request-response cycle.
+    - Call the next middleware in the stack.
+
 #### Middleware for HttpErrors
 #### Error handling with Boom
 #### Joi for data validation

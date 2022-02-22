@@ -6,34 +6,28 @@ const ProductsService = require('../services/productService');
 const router = express.Router();
 const service = new ProductsService();
 
-router.get('/', async (req, res) => {
-    const products = await service.find();
+router.get('/', (req, res) => {
+    const products = service.find();
     res.json(products);
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const product = await service.findOne(id);
+    const product = service.findOne(id);
     res.json(product);
 })
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     const body = req.body;
-    const newProduct = await service.create(body);
+    const newProduct = service.create(body);
     res.status(201).json(newProduct);
 })
 
-router.patch('/:id', async (req, res) => { // patch recibe los objetos de forma parcial
-    try { // el try, allows me to execute code and if there is an error in my async function, show it accordingly
-        const { id } = req.params; //
-        const body = req.body;
-        const productUpdated = await service.update(id, body);
-        res.json(productUpdated);
-    } catch (error) {
-        res.status(404).json({
-            message: error.message
-        })
-    }
+router.patch('/:id', (req, res) => { // patch recibe los objetos de forma parcial
+    const { id } = req.params; //
+    const body = req.body;
+    const productUpdated = service.update(id, body);
+    res.json(productUpdated);
 })
 
 router.put('/:id', (req, res) => { // put no recibe parcial, receives the complete object
@@ -46,9 +40,9 @@ router.put('/:id', (req, res) => { // put no recibe parcial, receives the comple
     })
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    const productDeleted = await service.delete(id);
+    const productDeleted = service.delete(id);
     res.json(productDeleted);
 })
 
