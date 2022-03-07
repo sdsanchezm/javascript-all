@@ -1,0 +1,33 @@
+#btnsk {
+    width: 75%;
+    display: grid;
+    grid-template-columns: auto;
+    /* grid-template-rows: 48px 48px 48px; */
+    grid-template-rows: auto;
+    /* grid-column-gap: 3px; */
+    grid-template-areas: 
+      "btn1 btn2 btn3"
+      "btn4 btn5 btn6"
+      "btn7 btn8 btn9";
+}
+
+.buttonContainer {
+    width: 25%;
+}
+
+.buttonContainer > .buttonClass {
+    width: 30%;
+    height: 48px;
+    font-size: 24px;
+}
+
+/* #btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7, #btn8, #btn9 */
+k1 {
+    font-size: 24px;
+    color: black;
+    font-family: verdana;
+    height: 48px;
+    width: 70%;
+    border: light-grey;
+    border-style: solid;
+}
