@@ -4,7 +4,7 @@ console.log(x);
 console.log(x++);
 console.log(++x);
 
-// Stupid object literal:
+// object literal:
 const person = {
   name: 'obama',
   lastname: 'sanchez',
@@ -13,7 +13,7 @@ const person = {
 
 console.log(person.age);
 
-// Stupid gneral object:
+// gneral object:
 person.weight = 32;
 
 console.log(person);
