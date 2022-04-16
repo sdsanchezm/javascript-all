@@ -377,11 +377,186 @@ function example(req, res, next) {
 
 
 #### Middleware for HttpErrors
+
+- As backend, we should say that the data is consistent (image urls, prices, time, strings, numbers, etc)
+- Is validation, before expose/send the service
+- Check if data is under requirements
+```
+npm install joi
+```
+- It is included in the `schemas` folder but also could be in the `dto` folder (Data Transfer Object.)
+- Middlewares works sequencially (one after the other) using next();
+
+
 #### Error handling with Boom
+
+- Install boom
+```
+npm install @hapi/boom 
+```
+
+- Create the errorHandling.js 
+```
+function logErrors(err, req, res, next){
+    console.log('LogErrors')
+    console.log(err);
+    next(err);
+}
+
+function errorHandler(err, req, res, next){
+    res.status(500).json({
+        message: err.message,
+        stack: err.stack,
+    })
+}
+
+function boomErrorHandler(err, req, res, next){
+    if(err.isBoom){
+        const { output } = err;
+        return res.status(output.statusCode).json(output.payload);
+    }
+    next(err);
+}
+
+module.exports = { logErrors, errorHandler, boomErrorHandler };
+```
+- To return an error after validation:
+
+```
+if(error){
+    next(boom.badRequest(error));
+}else {
+    next();
+}
+```
+- For example, in the service:
+```
+async findOne(id){
+    // const name = this.getTotal(); // this is just to trigger a temporary error to test 
+    const product = this.products.find(item => item.id === id);
+    if(!product){
+        throw boom.notFound('product not found'); // this requires @hapi/boom 
+    }
+    if(product.isBlock){
+        throw boom.conflict('product is block');
+    }
+    return product;
+}
+```
+
+
+
 #### Joi for data validation
+- Joi validates error by error, not all at the same time (this is by default);
+- The data validation, should be included in the routing, not in the service, example:
+```
+router.patch('/:id', 
+    validatorHandler(getProductSchema, 'params'),
+    validatorHandler(updateProductSchema, 'body'),
+    async (req, res, next) => { // patch recibe los objetos de forma parcial
+        try { // el try, allows me to execute code and if there is an error in my async function, show it accordingly
+            const { id } = req.params; //
+            const body = req.body;
+            const productUpdated = await service.update(id, body);
+            res.json(productUpdated);
+        } catch (error) {
+            next(error);
+        }
+})
+```
+- data validation for get, is different from update and created (for example, all fields are not mandatory for update but they are for create).
+- Validation is not made directly, should create a validatorHandler and include the schema and then the property (the property could be body, params, query, because the data may come in different ways) 
+- This is an example of ValidatorHandler:
+```
+//const res = require("express/lib/response");
+const boom = require('@hapi/boom');
+
+function validatorHandler(schema, property){
+    return (req, res, next) => {
+        const data = req[property];
+        // information may come from:
+        // req.body
+        // req.params
+        // req.query
+        const { error } = schema.validate(data, { abortEarly: false }); // abortEarly, will allows to show all errors at the same time, like this: 	"message": "\"name\" length must be at least 3 characters long. \"price\" must be greater than or equal to 8"
+
+        if(error){
+            next(boom.badRequest(error));
+        }else {
+            next();
+        }
+    }
+};
+
+module.exports = validatorHandler;
+```
+
+- An Schema, must be created in order to establish how the fields are defined, for instance a name should contain only characters and not numbers. 
+- Thhis is an example of schema:
+```
+// a schema can also be named as DTO (Data Transfer Object) 
+
+const Joi = require('joi');
+
+const id = Joi.string().uuid();
+const name = Joi.string().min(3).max(15);
+const price = Joi.number().integer().min(8);
+const image = Joi.string().uri();
+
+const createProductSchema = Joi.object({
+    name: name.required(),
+    price: price.required(),
+    image: image.required(),
+});
+
+const updateProductSchema = Joi.object({
+    name: name,
+    price: price,
+});
+
+const getProductSchema = Joi.object({
+    id: id.required(),
+});
+
+module.exports = { createProductSchema, updateProductSchema, getProductSchema };
+```
+
 #### Testing endpoints
+
+- Each endpoint must define their own schema, the reason is because it depends on what is required on the service
+- Boom automatically generates a http status for each error (404, 201, badRequest, not found, etc)
+
 #### Popular Middlewares
+
+- CORS: 
+    - Middleware to enable CORS (Cross-origin resource sharing) in routes or apps
+    - (http://expressjs.com/en/resources/middleware/cors.html)[http://expressjs.com/en/resources/middleware/cors.html]
+
+- Morgan
+    - Node.js http requests logger
+    - (http://expressjs.com/en/resources/middleware/morgan.html)[http://expressjs.com/en/resources/middleware/morgan.html]
+
+- Helmet
+    - Helmet help to protect express apps (security related) configuring multiple http headers. (not bulletproof but might help)
+    - [https://github.com/helmetjs/helmet](https://github.com/helmetjs/helmet)
+
+- Express Debug
+    - Help to make debugging in our applications.
+    - [https://github.com/devoidfury/express-debug](https://github.com/devoidfury/express-debug)
+
+- Express Slash
+    - Allows to worry less about writing routes with or without slash at the end.
+    - [https://github.com/ericf/express-slash](https://github.com/ericf/express-slash)
+
+- Passport
+    - Authentications related in apps: 
+    - [https://github.com/jaredhanson/passport](https://github.com/jaredhanson/passport)
+
+- More about middlewares here: [http://expressjs.com/en/resources/middleware.html](http://expressjs.com/en/resources/middleware.html)
+
 ### Deployment
+
+
 #### Production Env Considerations
 #### Problems with CORS
 #### Heroku Deployment

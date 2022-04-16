@@ -33,6 +33,7 @@ app.get('/id', (req, res) => {
     res.send('hi, this is /id');
 })
 
+
 routerApi(app);
 
 // These are the middlewares
