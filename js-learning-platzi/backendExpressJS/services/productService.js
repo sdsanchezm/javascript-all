@@ -1,4 +1,5 @@
 const faker = require('faker');
+const boom = require('@hapi/boom');
 
 class ProductsService {
 
@@ -14,7 +15,8 @@ class ProductsService {
                 id: faker.datatype.uuid(),
                 name: faker.commerce.productName(),
                 price: parseInt(faker.commerce.price(), 10),
-                image: faker.image.imageUrl()
+                image: faker.image.imageUrl(),
+                isBlock: faker.datatype.boolean(),
             });
         }
     }
@@ -38,12 +40,23 @@ class ProductsService {
     }
 
     async findOne(id){
-        return this.products.find(item => item.id === id);
+        // const name = this.getTotal(); // this is just to trigger a temporary error to test 
+        const product = this.products.find(item => item.id === id);
+        if(!product){
+            throw boom.notFound('product not found'); // this requires @hapi/boom 
+        }
+        if(product.isBlock){
+            throw boom.conflict('product is block');
+        }
+        return product;
     }
 
     async update(id, updateDetails){
         const index = this.products.findIndex( item => item.id === id );
-        if ( index === -1 ) { throw new Error('Product Not Found');}
+        if ( index === -1 ) { 
+        //    throw new Error('Product Not Found');
+            throw boom.notFound('product not found'); // this requires @hapi/boom
+        }
         const actualProduct = this.products[index];
         this.products[index] = {
             ...actualProduct,
@@ -54,7 +67,7 @@ class ProductsService {
     
     async delete(id){
         const index = this.products.findIndex( item => item.id === id );
-        if ( index === -1 ) { throw new Error('Product Not Found');}
+        if ( index === -1 ) { throw boom.notFound('product not found'); } // this is using @hapi/boom
         const deletedValue = this.products.splice(index, 1); // elimina un elemento y cuandos a partir de ese elemento
         return { id };
     }

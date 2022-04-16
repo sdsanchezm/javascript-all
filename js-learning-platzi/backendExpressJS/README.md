@@ -329,21 +329,52 @@ router.patch('/:id', async (req, res) => { // patch recibe los objetos de forma 
 
 - Documentation at: [https://expressjs.com/en/guide/writing-middleware.html](https://expressjs.com/en/guide/writing-middleware.html)
 
-Middleware es software que permite uno o más tipos de comunicación o conectividad entre dos o más aplicaciones o componentes de aplicaciones en una red distribuida. Al facilitar la conexión de aplicaciones que no fueron diseñadas para conectarse entre sí, y al brindar funcionalidad para conectarlas de manera inteligente, el middleware agiliza el desarrollo de aplicaciones y acelera el tiempo de comercialización.
 
-casos de uso le puedes dar en tus apps como:
+#### What can we do with middlewares 
+
+- Middleware es software que permite uno o más tipos de comunicación o conectividad entre dos o más aplicaciones o componentes de aplicaciones en una red distribuida. Al facilitar la conexión de aplicaciones que no fueron diseñadas para conectarse entre sí, y al brindar funcionalidad para conectarlas de manera inteligente, el middleware agiliza el desarrollo de aplicaciones y acelera el tiempo de comercialización.
+
+- Middleware use cases:
 
 - Middleware a nivel de aplicación
 - Middleware a nivel de direccionamiento (routers)
-- Middleware para manejo de errores
-- Middlewares incorporados
-- Middleware de terceros
+- error handling middleware
+- third party middleware
+- validate data
+- Error capture
+- Permission validation
+- Access Control
 
 - Actions performed by a middleware: 
     - Execute any code.
     - Make changes to the request and the response objects.
     - End the request-response cycle.
     - Call the next middleware in the stack.
+
+- Middlewares are between request and response
+- Can be used globaly or particular for endpoints
+- They can work in a sequencial way
+- they can validate if a user is logged in, for example
+- A middleware can block (one validates date, other one validates permissions, and if not, it does not allow go to the next step)
+- the structure is like this (it does include a next)
+
+```
+function example(req, res, next) {
+  if (condition1) {
+    res.send('Error en condition1');
+  } else {
+      next();
+  }
+}
+```
+
+- Error Middlewares are also a type of middlewares (normally these, receve the error first) `function example(req, res, next) `
+- Error middlewares must have 4 parameters, (thats the way to tell is an error middleware);
+- They work like pipes (the output of one is the input of the other)
+- Middlewares are defined after defining the routing. 
+- It is important to note in what order the are excuted
+
+
 
 #### Middleware for HttpErrors
 #### Error handling with Boom

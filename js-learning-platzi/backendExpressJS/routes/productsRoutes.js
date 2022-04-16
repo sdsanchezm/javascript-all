@@ -11,10 +11,14 @@ router.get('/', async (req, res) => {
     res.json(products);
 })
 
-router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    const product = await service.findOne(id);
-    res.json(product);
+router.get('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const product = await service.findOne(id);
+        res.json(product);
+    } catch (error) {
+        next(error);
+    }
 })
 
 router.post('/', async (req, res) => {
@@ -23,16 +27,14 @@ router.post('/', async (req, res) => {
     res.status(201).json(newProduct);
 })
 
-router.patch('/:id', async (req, res) => { // patch recibe los objetos de forma parcial
+router.patch('/:id', async (req, res, next) => { // patch recibe los objetos de forma parcial
     try { // el try, allows me to execute code and if there is an error in my async function, show it accordingly
         const { id } = req.params; //
         const body = req.body;
         const productUpdated = await service.update(id, body);
         res.json(productUpdated);
     } catch (error) {
-        res.status(404).json({
-            message: error.message
-        })
+        next(error);
     }
 })
 
@@ -57,7 +59,7 @@ router.get('/filter', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    // const id = req.params.id; 
+     // const id = req.params.id; 
     const { id } = req.params; // esto es desestructurando el endpoint, se usa params para los paramatros
     res.json(
         {
