@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const routerApi = require('./routes');
 // const faker = require('faker');
 
@@ -8,19 +7,7 @@ const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/err
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // here, we enable a middleware
-
-const whitelist = ['http://localhost:8080', 'https://myapp.co'];
-const options = {
-    origin: (origin, callback) => {
-        if(whitelist.includes(origin) || !origin ){
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed'));
-        }
-    }
-}
-app.use(cors(options)); // if only this statement is used, then it will accept all origins/domains 
+app.use(express.json()); // aca se habilita un middleware 
 
 app.get('/', (req, res) => {
     res.send('hi, this is root');
@@ -59,4 +46,5 @@ app.use(errorHandler);
 app.listen(port, () => {
     console.log('running ok at port: ' + port);
 })
+
 

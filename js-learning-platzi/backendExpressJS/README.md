@@ -530,11 +530,11 @@ module.exports = { createProductSchema, updateProductSchema, getProductSchema };
 
 - CORS: 
     - Middleware to enable CORS (Cross-origin resource sharing) in routes or apps
-    - (http://expressjs.com/en/resources/middleware/cors.html)[http://expressjs.com/en/resources/middleware/cors.html]
+    - [http://expressjs.com/en/resources/middleware/cors.html](http://expressjs.com/en/resources/middleware/cors.html)
 
 - Morgan
     - Node.js http requests logger
-    - (http://expressjs.com/en/resources/middleware/morgan.html)[http://expressjs.com/en/resources/middleware/morgan.html]
+    - [http://expressjs.com/en/resources/middleware/morgan.html](http://expressjs.com/en/resources/middleware/morgan.html)
 
 - Helmet
     - Helmet help to protect express apps (security related) configuring multiple http headers. (not bulletproof but might help)
@@ -558,5 +558,51 @@ module.exports = { createProductSchema, updateProductSchema, getProductSchema };
 
 
 #### Production Env Considerations
+
+- Some considerations:
+    - Evaluate hour CORS (Cross-origin resource sharing) What and who we grant access to make requests in the server
+    - Server https (secure)
+    - Build Processes (sometimes is required to build, for example TypeScript)
+    - Remove Logs (there is good ways to handle logs in prd)
+    - Security (Helmet, a collection of middlewares)
+    - Testing (create unit testing or integration before deploy)
+
+- 2 options, requests from same origin or remote origin
+- Backend may accept only local or remote origin
+- If request are made from the same origin, is normally okay but in production remote origins requests are common
+
+
+
+
 #### Problems with CORS
+
+- Install CORS
+```
+npm install cors
+```
+- Call it before routes:
+```
+const cors = require('cors');
+```
+- Usage in the index.js file:
+```
+const whitelist = ['http://localhost:8080', 'https://myapp.co'];
+const options = {
+    origin: (origin, callback) => {
+        if(whitelist.includes(origin) || !origin ){ // the !origin is for the app to accept our origin
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed'));
+        }
+    }
+}
+app.use(cors(options)); // if only this statement is used, then it will accept all origins/domains 
+```
+
+
 #### Heroku Deployment
+
+// pending 
+
+
+
