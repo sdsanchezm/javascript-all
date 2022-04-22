@@ -14,3 +14,11 @@ npm install
 ```
 npm run
 ```
+
+### Nice way to get all elements in a structure
+
+```
+const kk1 = document.querySelectorAll("div.Syllabus-class-container-text > p");
+kk1.forEach( x => console.log(x.outerText) );
+```
+
