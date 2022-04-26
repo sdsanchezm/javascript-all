@@ -605,4 +605,11 @@ app.use(cors(options)); // if only this statement is used, then it will accept a
 // pending 
 
 
+#### Cool Documentation:
 
+- https://www.educative.io/edpresso/what-is-reqquery-in-expressjs
+- https://dmitripavlutin.com/javascript-object-destructuring/#:~:text=The%20object%20destructuring%20is%20a,the%20property%20doesn't%20exist.
+- https://stackabuse.com/get-query-strings-and-parameters-in-express-js/
+- https://dev.to/gathoni/express-req-params-req-query-and-req-body-4lpc
+- https://expressjs.com/en/guide/routing.html 
+- https://levelup.gitconnected.com/fetch-api-data-with-axios-and-display-it-in-a-react-app-with-hooks-3f9c8fa89e7b
