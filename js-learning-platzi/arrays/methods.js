@@ -128,3 +128,192 @@ unshift();
 values();
 // Returns a new array iterator object that contains the values for each index in the array.
 
+
+// ************************************************************************
+// ************************************  Examples:
+// ************************************************************************
+
+const people = [
+    {
+        id: 1,
+        name: 'Morty Smith',
+        gender: 'male',
+        eyeColor: 'black',
+        mass: 70,
+        height: 132,
+    },
+    {
+        id: 2,
+        name: 'Beth Smith',
+        gender: 'female',
+        eyeColor: 'green',
+        mass: 126,
+        height: 201,
+    },
+    {
+        id: 3,
+        name: 'Rick Sanchez',
+        gender: 'male',
+        eyeColor: 'brown',
+        mass: 61,
+        height: 120,
+    },
+    {
+        id: 4,
+        name: 'Jerry Smith',
+        gender: 'male',
+        eyeColor: 'blue',
+        mass: 84,
+        height: 125,
+    },
+    {
+        id: 5,
+        name: 'Summer Smith',
+        gender: 'female',
+        eyeColor: 'green',
+        mass: 94,
+        height: 158,
+    },
+    {
+        id: 6,
+        name: 'Bird Person',
+        gender: 'male',
+        eyeColor: 'black',
+        mass: 190,
+        height: 108,
+    }
+];
+
+//*********************MAP*********************
+console.log(`********************MAP*********************`);
+//1. Get array of all names
+const map1 = people.map( (item) => (item.name) );
+console.log(map1);
+//2. Get array of all heights
+const map2 = people.map( item => item.height );
+console.log(map2);
+//3. Get array of objects with just name and height properties
+const map3 = people.map( item => ({ name: item.name, height: item.height }) );
+console.log(map3);
+//4. Get array of all first names
+const map4 = people.map( item => item.name.split(' ')[0] );
+console.log(map4);
+
+//*********************REDUCE*********************
+console.log(`*********************REDUCE*********************`);
+//1. Get total mass of all people
+const reduce1 = people.reduce( (accum, current) => (accum + current.mass), 0);
+console.log(reduce1);
+//2. Get total height of all people
+const reduce2 = people.reduce( (accum, current) => (accum + current.height), 0);
+console.log(reduce2);
+//3. Get total number of people by eye color
+const reduce3 = people.reduce( (accum, current) => {
+    if(accum[current.eyeColor]){
+        accum[current.eyeColor]++;
+    }else{
+        accum[current.eyeColor] = 1;
+    }
+    return accum;
+    
+}, {});
+console.log(reduce3);
+//4. Get total number of people in all the character names
+const reduce4 = people.reduce( (accum, current) => {
+    return accum + current.name.length;
+}, 0);
+console.log(reduce4);
+
+//*********************SORT*********************
+console.log(`*********************SORT*********************`);
+//1. Sort by mass
+const sort1 = people.sort( (a, b) => {
+    if(a.mass > b.mass) return 1;
+    if(a.mass < b.mass) return -1;
+    return 0;
+} );
+console.log(sort1);
+//2. Sort by height
+const sort2 = people.sort( (a, b) => { 
+    if (a.height > b.height){ return 1 };
+    if (a.height < b.height){ return -1 };
+    return 0;
+} );
+console.log(sort2);
+//3. Sort by name
+const sort3 = people.sort( (a, b) => { 
+    const nameA = a.name.toLocaleLowerCase();
+    const nameB = b.name.toLocaleLowerCase();
+    if(a.name < b.name) return -1;
+    if(a.name > b.name) return 1;
+    return 0;
+});
+console.log(sort3);
+//4. Sort by gender
+const sort4 = people.sort( (a, b) => {
+    if(a.gender < b.gender) return -1;
+    if(a.gender > b.gender) return 1;
+    return 0;
+});
+console.log(sort4);
+
+//*********************FILTER*********************
+console.log(`*********************FILTER*********************`);
+//1. Get people with mass greater than 98
+const filter1 = people.filter( (item) => {
+    return item.mass > 98;
+});
+console.log(filter1);
+//2. Get people with height less than 150
+const filter2 = people.filter( (item) => {
+    return item.height < 150;
+});
+console.log(filter2);
+//3. Get all male people
+const filter3 = people.filter( (item) => item.gender === 'male' );
+console.log(filter3);
+//4. Get all female people
+const filter4 = people.filter( (item) => {
+    return item.gender === 'female';
+});
+console.log(filter4);
+
+//*********************EVERY*********************
+console.log(`*********************EVERY*********************`);
+//1. Does every character have blue eyes?
+//const every1 = people.filter( (item) => item.eyeColor === 'blue' ).every( (item) => item.eyeColor === 'blue' );
+const every1 = people.every( (item) => item.eyeColor === 'blue' );
+console.log(every1);
+//2. Does every character have mass more than 60?
+const every2 = people.every( (item) => item.mass > 60 );
+console.log(every2);
+//3. Is every character shorter than 202?
+const every3 = people.every( (item) => {
+    return item.height < 202;
+});
+console.log(every3);
+//4. Is every character male?
+const every4 = people.every( (item) => {
+    return item.gender === 'male';
+});
+console.log(every4);
+
+//*********************SOME*********************
+console.log(`*********************SOME*********************`);
+//1. Is there at least one male character?
+const some1 = people.some( (item) => item.gender === 'male' );
+console.log(some1);
+//2. Is there at least one character with blue eyes?
+const some2 = people.some( (item) => { item.eyeColor === 'blue' });
+console.log(some2);
+//3. Is there at least one character taller than 210?
+const some3 = people.some( (item) => { 
+    return item.height > 210 
+});
+console.log(some3);
+//4. Is there at least one character that has mass less than 70?
+const some4 = people.some( (item) => { return item.mass < 70; } );
+console.log(some4);
+
+
+
