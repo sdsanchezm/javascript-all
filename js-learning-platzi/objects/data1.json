@@ -1,0 +1,29 @@
+{
+    "posts": [
+      {
+        "author": "Darth Vader", 
+        "authorId": 9,
+        "id": 1
+      },
+      {
+        "author": "Luke Skywalker",
+        "authorId": 8,
+        "id": 2
+      },
+      {
+        "author": "Anakin skywalker",
+        "authorId": 5,
+        "id": 3
+      },
+      {
+        "author": "Leia Skywalker",
+        "authorId": 6,
+        "id": 4
+      },
+      {
+        "author": "Leia Skywalker",
+        "authorId": 6,
+        "id": 4
+      }
+    ]
+}
